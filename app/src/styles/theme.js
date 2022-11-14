@@ -1,5 +1,5 @@
 const theme = {
-  const COLOR_PALETTE = {
+  const COLOR_PALETTE: {
     primary: '#252F3D',
     secondary: '#146eb4',
     background: '#252F3D',
