@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
-
+const fs = require("fs");
+const http = require("http");
 const URL = "https://www.amazon.es/";
 
 (async () => {
@@ -9,7 +10,7 @@ const URL = "https://www.amazon.es/";
   const page = await browser.newPage();
   // Accedemos a la URL
   await page.goto(URL);
-  //   await page.click("#sp-cc-accept");
+
   await page.screenshot({ path: "./screenshots/amazon-home.jpg" });
 
   await page.type("#twotabsearchtextbox", "iphone");
@@ -27,9 +28,43 @@ const URL = "https://www.amazon.es/";
           img: node.querySelector(".s-image")?.src,
           price: node.querySelector(".a-price-whole")?.innerHTML,
           review: node.querySelector(".a-icon-alt")?.innerHTML,
-          delivery: node.querySelector(".a-row.a-size-base.a-color-secondary.s-align-children-center")?.innerText.replace('\n', '. '),
+          delivery: node
+            .querySelector(
+              ".a-row.a-size-base.a-color-secondary.s-align-children-center"
+            )
+            ?.innerText.replace("\n", ". "),
         }));
       });
+
+      const productsJSON = await JSON.stringify(products);
+
+      fs.writeFile(
+        "./data.json",
+        productsJSON,
+        (error) => error && console.log("Ha habido un error.")
+      );
     })();
   }, 2000);
+
+  const PORT = 8080;
+  const server = http.createServer(requestHandler);
+
+  server.listen(PORT, () => {
+    console.log(`Server started in http://localhost:${PORT} 🚀`);
+  });
 })();
+
+const requestHandler = (req, res) => {
+  res.setHeader("Content-Type", "text/json");
+  res.writeHead(200);
+
+  const products = fs.readFileSync("./products.json", (error, products) => {
+    if (error) {
+      console.log("No encuentro el fichero solicitado ❌");
+    } else {
+      const parsedProducts = JSON.parse(products);
+      return parsedProducts;
+    }
+  });
+  if (req.url === "/") res.end(products);
+};
