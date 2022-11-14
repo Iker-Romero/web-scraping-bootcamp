@@ -28,6 +28,7 @@ const URL = "https://www.amazon.es/";
           img: node.querySelector(".s-image")?.src,
           price: node.querySelector(".a-price-whole")?.innerHTML,
           review: node.querySelector(".a-icon-alt")?.innerHTML,
+          delivery: node.querySelector(".a-row.a-size-base.a-color-secondary.s-align-children-center")?.innerText.replace('\n', '. '),
         }));
       });
 
