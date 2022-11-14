@@ -11,6 +11,8 @@ const URL = "https://www.amazon.es/";
   // Accedemos a la URL
   await page.goto(URL);
 
+  // await page.querySelector("#sp-cc-accept")?.click("#sp-cc-accept");
+
   await page.screenshot({ path: "./screenshots/amazon-home.jpg" });
 
   await page.type("#twotabsearchtextbox", "iphone");
