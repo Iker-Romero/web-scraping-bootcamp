@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Root from "./routes/Root";
-import GlobalStyle from "styled-components";
+import { ThemeProvider } from "styled-components";
 import Home from "./routes/Home";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { GlobalStyle, theme } from "./styles/index.js";
 
 const router = createBrowserRouter([
   {
