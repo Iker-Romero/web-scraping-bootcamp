@@ -1,6 +1,5 @@
 const puppeteer = require("puppeteer");
 
-// twotabsearchtextbox
 const URL = "https://www.amazon.es/";
 
 (async () => {
@@ -15,7 +14,7 @@ const URL = "https://www.amazon.es/";
 
   await page.type("#twotabsearchtextbox", "iphone");
   await page.click("#nav-search-submit-button");
-  //   await page.waitForSelector('#twotabsearchtextbox', {timeout: 10000});
+
   setTimeout(() => {
     (async () => {
       page.screenshot({ path: "./screenshots/search-result.jpg" });
@@ -31,12 +30,6 @@ const URL = "https://www.amazon.es/";
           delivery: node.querySelector(".a-row.a-size-base.a-color-secondary.s-align-children-center")?.innerText.replace('\n', '. '),
         }));
       });
-
-      console.log(products);
     })();
   }, 2000);
-  //   page
-  //     .waitForXPath("#twotabsearchtextbox")
-  //     .screenshot({ path: "./screenshots/search-result.jpg" });
-  // const backgroundPage = await Browser.waitForTarget((target) => target.type() === 'background_page')
 })();
