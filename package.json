@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "cypress": "^11.0.1",
+    "puppeteer": "^19.2.2"
+  },
+  "name": "web-scraping-bootcamp",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iker-Romero/web-scraping-bootcamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Iker-Romero/web-scraping-bootcamp/issues"
+  },
+  "homepage": "https://github.com/Iker-Romero/web-scraping-bootcamp#readme"
+}
