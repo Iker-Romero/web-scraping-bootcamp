@@ -7,3 +7,5 @@ const theme = {
     highlight: '#ff9900'
   }
 }
+
+export default theme;
